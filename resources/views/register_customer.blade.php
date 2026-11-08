@@ -1,7 +1,5 @@
 @extends('layout')
 
-@section('title', 'Register - SabraEat')
-
 @section('content')
 <div class="card">
 
@@ -9,11 +7,7 @@
     <p class="subtitle">Register as a Student or Campus Customer</p>
 
     @if ($errors->any())
-        <div class="alert">
-            @foreach ($errors->all() as $error)
-                <div>{{ $error }}</div>
-            @endforeach
-        </div>
+        <div class="alert">{{ $errors->first() }}</div>
     @endif
 
     <div class="tabs">
@@ -26,17 +20,17 @@
 
         <div class="form-group">
             <label>Full Name</label>
-            <input type="text" name="name" value="{{ old('name') }}" placeholder="e.g. Nimal Perera" required>
+            <input type="text" name="name" placeholder="e.g. Nimal Perera" required>
         </div>
 
         <div class="form-group">
             <label>Email Address</label>
-            <input type="email" name="email" value="{{ old('email') }}" placeholder="e.g. nimalperera@gmail.com" required>
+            <input type="email" name="email" placeholder="e.g. nimalperera@gmail.com" required>
         </div>
 
         <div class="form-group">
             <label>Mobile Phone Number</label>
-            <input type="text" name="phone" value="{{ old('phone') }}" placeholder="+94 00 000 0000" required>
+            <input type="text" name="phone" placeholder="+94 00 000 0000" required>
         </div>
 
         <div class="form-group">

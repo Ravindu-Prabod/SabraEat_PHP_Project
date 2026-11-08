@@ -24,14 +24,22 @@
     <form action="{{ route('register.outlet.post') }}" method="POST">
         @csrf
 
-        <div class="form-group">
-            <label>Select Food Outlet / Bakery</label>
-            <select name="outlet" required>
-                <option value="Uvindu Food Cabin (Uni Main Gate)" {{ old('outlet') == 'Uvindu Food Cabin (Uni Main Gate)' ? 'selected' : '' }}>Uvindu Food Cabin (Uni Main Gate)</option>
-                <option value="Campus Canteen" {{ old('outlet') == 'Campus Canteen' ? 'selected' : '' }}>Campus Canteen</option>
-                <option value="Sabra Bakery" {{ old('outlet') == 'Sabra Bakery' ? 'selected' : '' }}>Sabra Bakery</option>
-            </select>
-        </div>
+       <div class="form-group">
+    <label>Select Food Outlet / Bakery</label>
+    <select name="outlet" required>
+        
+        <option value="Uvindu Food Cabin" {{ old('outlet') == 'Uvindu Food Cabin' ? 'selected' : '' }}>Uvindu Food Cabin</option>
+        <option value="Shan Food Cabin" {{ old('outlet') == 'Shan Food Cabin' ? 'selected' : '' }}>Shan Food Cabin</option>
+        <option value="Eat Art Food Restaurant" {{ old('outlet') == 'Eat Art Food Restaurant' ? 'selected' : '' }}>Eat Art Food Restaurant</option>
+        <option value="Jayalanka Food" {{ old('outlet') == 'Jayalanka Food' ? 'selected' : '' }}>Jayalanka Food</option>
+        <option value="Dayashanthi" {{ old('outlet') == 'Dayashanthi' ? 'selected' : '' }}>Dayashanthi</option>
+        <option value="Royal Box" {{ old('outlet') == 'Royal Box' ? 'selected' : '' }}>Royal Box</option>
+        <option value="Bhanini Food" {{ old('outlet') == 'Bhamini Food' ? 'selected' : '' }}>Bhamini Food</option>
+        <option value="Samanala Lounge" {{ old('outlet') == 'Samanala Lounge' ? 'selected' : '' }}>Samanala Lounge</option>
+        <option value="Mohan Bakery" {{ old('outlet') == 'Mohan Bakery' ? 'selected' : '' }}>Mohan Bakery</option>
+        <option value="Liyanage Bakery" {{ old('outlet') == 'Liyanage Bakery' ? 'selected' : '' }}>Liyanage Bakery</option>
+    </select>
+</div>
 
         <div class="form-group">
             <label>Outlet Manager Name</label>
