@@ -45,9 +45,15 @@
             "npm install",
             "npm run build"
         ],
+<<<<<<< HEAD
+        "dev": [
+            "Composer\\Config::disableProcessTimeout",
+            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1 --timeout=0\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite --kill-others"
+=======
        "dev": [
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1 --timeout=0\" \"npm run dev\" --names=server,queue,vite --kill-others"
+>>>>>>> origin/main
         ],
         "test": [
             "@php artisan config:clear --ansi",
@@ -58,8 +64,12 @@
             "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
+<<<<<<< HEAD
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+=======
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
             "@php artisan boost:update --ansi"
+>>>>>>> origin/main
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -89,4 +99,8 @@
     },
     "minimum-stability": "stable",
     "prefer-stable": true
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/main
