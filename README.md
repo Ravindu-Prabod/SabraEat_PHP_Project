@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -57,3 +58,72 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+=======
+# SabraEat PHP Project
+
+## About the Project
+
+SabraEat is a web-based food ordering system developed using the Laravel PHP framework.
+
+This project is developed as a group project to provide an easy and convenient way for users to explore food menus and manage food orders.
+
+## Technologies Used
+
+- PHP
+- Laravel
+- MySQL
+- HTML
+- CSS
+- JavaScript
+- Bootstrap
+
+## Installation
+
+1. Clone the repository.
+
+```bash
+git clone https://github.com/Ravindu-Prabod/SabraEat_PHP_Project.git
+```
+
+2. Open the project folder.
+
+```bash
+cd SabraEat_PHP_Project
+```
+
+3. Install dependencies.
+
+```bash
+composer install
+```
+
+4. Create the environment file.
+
+```bash
+cp .env.example .env
+```
+
+5. Generate the application key.
+
+```bash
+php artisan key:generate
+```
+
+6. Configure your database in the `.env` file.
+
+7. Run migrations.
+
+```bash
+php artisan migrate
+```
+
+8. Start the Laravel development server.
+
+```bash
+php artisan serve
+```
+
+## Group Project
+
+SabraEat PHP Project – Developed collaboratively by a team of four members.
+>>>>>>> origin/main

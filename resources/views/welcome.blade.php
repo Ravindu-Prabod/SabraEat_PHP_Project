@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -275,3 +276,6 @@
         @endif
     </body>
 </html>
+=======
+<h1>hello ravindu</h1>
+>>>>>>> origin/main

@@ -22,3 +22,8 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+<<<<<<< HEAD
+=======
+.claude/
+.mcp.json
+>>>>>>> origin/main

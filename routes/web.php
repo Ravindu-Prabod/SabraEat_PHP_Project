@@ -1,11 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
 use App\Http\Controllers\AuthController;
+=======
+>>>>>>> origin/main
 
 Route::get('/', function () {
     return view('welcome');
 });
+<<<<<<< HEAD
 
 // Student / Customer register
 Route::get('/register', [AuthController::class, 'showRegisterCustomer'])->name('register');
@@ -17,3 +21,5 @@ Route::post('/register/outlet', [AuthController::class, 'registerOutlet'])->name
 
 // Login
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+=======
+>>>>>>> origin/main
