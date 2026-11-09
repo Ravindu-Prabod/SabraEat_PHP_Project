@@ -43,12 +43,12 @@
 
         <div class="form-group">
             <label>Outlet Manager Name</label>
-            <input type="text" name="name" value="{{ old('name') }}" placeholder="e.g. Uvindu Perera" required>
+            <input type="text" name="name"  placeholder="e.g. Uvindu Perera" required>
         </div>
 
         <div class="form-group">
             <label>Official Work Email</label>
-            <input type="email" name="email" value="{{ old('email') }}" placeholder="manager@uvindufood.lk" required>
+            <input type="email" name="email"  placeholder="manager@uvindufood.lk" required>
         </div>
 
         <div class="form-group">
