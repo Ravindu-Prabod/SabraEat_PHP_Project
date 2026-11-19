@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>SabraEat - Uvindu Food Cabin</title>
-        <style>
-           body {
+<head>
+    <title>SabraEat - Uvindu Food Cabin</title>
+    <style>
+        body {
             font-family: Arial, sans-serif;
             background-color: #FFFFFF;
             color: #172033;
             margin: 0;
         }
-         .navbar {
+        .navbar {
             background-color: #FFFFFF;
             padding: 15px 40px;
             display: flex;
@@ -26,12 +26,13 @@
             color: #172033;
             text-decoration: none;
         }
-         .logo-icon {
+        .logo-icon {
             background-color: #D1D119;
             padding: 6px 10px;
             border-radius: 10px;
         }
-        .logo span { color: #8a8d00; }
+        .logo span {
+           color: #8a8d00; }
         .search {
             width: 350px;
             padding: 12px 20px;
@@ -71,6 +72,7 @@
             align-items: center;
             gap: 24px;
         }
+
         .photo {
             width: 200px;
             height: 110px;
@@ -98,7 +100,7 @@
             color: #64748B;
             margin: 5px 0;
         }
-         .categories {
+        .categories {
             margin-top: 12px;
             display: flex;
             gap: 8px;
@@ -118,7 +120,7 @@
             font-size: 18px;
             margin: 25px 0 15px 0;
         }
-         .food-menu {
+        .food-menu {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 16px;
@@ -149,7 +151,7 @@
             font-weight: bold;
             margin: 0;
         }
-         .add {
+        .add {
             background-color: #D1D119;
             border: none;
             width: 28px;
@@ -158,6 +160,10 @@
             font-weight: bold;
             font-size: 16px;
             cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
         }
         .outlet-info-box {
             background-color: #FEFCE8;
@@ -171,20 +177,20 @@
             font-size: 15px;
             color: #854d0e;
         }
-          .outlet-info-box p {
+        .outlet-info-box p {
             margin: 4px 0;
             font-size: 13px;
             color: #64748B;
-        } 
-        </style>
-        </head>
-        <body>
-   <div class="navbar">
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
         <a href="#" class="logo">
-       <img src="{{ asset('images/Logo.png') }}" alt="SabraEat Logo" style="height: 40px;">
+            <img src="{{ asset('images/Logo.png') }}" alt="SabraEat Logo" style="height: 40px;">
         </a>
         <input type="text" class="search" placeholder="Search meals in Uvindu Food Cabin...">
-        <a href="#" class="cart-btn">Cart (0)</a>
+        <a href="#" class="cart-btn">Cart ({{ collect(session('cart', []))->sum('qty') }})</a>
     </div>
 
     <div class="container">
@@ -213,7 +219,12 @@
                 <h4>Chicken Rice & Curry</h4>
                 <div class="card-bottom">
                     <p>Rs. 400</p>
-                    <button class="add">+</button>
+                    <form action="{{ route('cart.add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="item_name" value="Chicken Rice & Curry">
+                        <input type="hidden" name="item_price" value="400">
+                        <button type="submit" class="add">+</button>
+                    </form>
                 </div>
             </div>
 
@@ -222,7 +233,12 @@
                 <h4>Veggi Rice & Curry</h4>
                 <div class="card-bottom">
                     <p>Rs. 250</p>
-                    <button class="add">+</button>
+                    <form action="{{ route('cart.add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="item_name" value="Veggi Rice & Curry">
+                        <input type="hidden" name="item_price" value="250">
+                        <button type="submit" class="add">+</button>
+                    </form>
                 </div>
             </div>
 
@@ -231,7 +247,12 @@
                 <h4>Egg Rice & Curry</h4>
                 <div class="card-bottom">
                     <p>Rs. 300</p>
-                    <button class="add">+</button>
+                    <form action="{{ route('cart.add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="item_name" value="Egg Rice & Curry">
+                        <input type="hidden" name="item_price" value="300">
+                        <button type="submit" class="add">+</button>
+                    </form>
                 </div>
             </div>
 
@@ -240,7 +261,12 @@
                 <h4>Fish Rice & Curry</h4>
                 <div class="card-bottom">
                     <p>Rs. 320</p>
-                    <button class="add">+</button>
+                    <form action="{{ route('cart.add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="item_name" value="Fish Rice & Curry">
+                        <input type="hidden" name="item_price" value="320">
+                        <button type="submit" class="add">+</button>
+                    </form>
                 </div>
             </div>
 
@@ -249,16 +275,26 @@
                 <h4>Fried Rice</h4>
                 <div class="card-bottom">
                     <p>Rs. 430</p>
-                    <button class="add">+</button>
+                    <form action="{{ route('cart.add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="item_name" value="Fried Rice">
+                        <input type="hidden" name="item_price" value="430">
+                        <button type="submit" class="add">+</button>
+                    </form>
                 </div>
             </div>
 
             <div class="food-card">
-                <div class="food-image"></div>
+               <div class="food-image"></div>
                 <h4>Chicken Fried Rice</h4>
                 <div class="card-bottom">
                     <p>Rs. 500</p>
-                    <button class="add">+</button>
+                    <form action="{{ route('cart.add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="item_name" value="Chicken Fried Rice">
+                        <input type="hidden" name="item_price" value="500">
+                        <button type="submit" class="add">+</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -270,8 +306,5 @@
             <p>Operating Hours: Open Daily 6:30 AM - 10:30 PM</p>
         </div>
     </div>
-
 </body>
-
-
 </html>

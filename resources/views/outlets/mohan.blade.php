@@ -177,7 +177,7 @@
             <img src="{{ asset('images/Logo.png') }}" alt="SabraEat Logo" style="height: 40px;">
         </a>
         <input type="text" class="search" placeholder="Search bakery items in Mohan Bakery...">
-        <a href="#" class="cart-btn">Cart (0)</a>
+        <a href="#" class="cart-btn">Cart ({{ collect(session('cart', []))->sum('qty') }})</a>
     </div>
 
     <div class="container">
