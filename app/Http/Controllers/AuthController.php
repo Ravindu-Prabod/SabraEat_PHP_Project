@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-lass AuthController extends Controller
+class AuthController extends Controller
 {
     // ---------- Pages ----------
+
     public function showRegisterCustomer()
     {
         return view('register_customer');
@@ -18,6 +19,11 @@ lass AuthController extends Controller
     public function showRegisterOutlet()
     {
         return view('register_outlet');
+    }
+
+    public function showLogin()
+    {
+        return view('login');
     }
 
       // ---------- Student / Customer register ----------
@@ -66,8 +72,26 @@ lass AuthController extends Controller
         return redirect('/');
     }
 
-    
+     //-------------Customer login --------------------
 
+
+     //-------------Outlet Adim login --------------------
+        
+
+        
+
+    //--------------Logout------------------
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
+
+    
+}
 
 
 ?>
