@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    // ---------- Pages ----------
-    // 'Register pages.register_customer' = resources/views/Register pages/register_customer.blade.php
+    
     public function showRegisterCustomer()
     {
         return view('Register pages.register_customer');
@@ -77,37 +76,7 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    // ---------- Customer login ----------
-    public function loginCustomer(Request $request)
-    {
-        $credentials = $request->validate([
-            'email'    => 'required|email',
-            'password' => 'required',
-        ]);
-
-        if (Auth::attempt($credentials + ['role' => 'customer'])) {
-            $request->session()->regenerate();
-            return redirect('/');
-        }
-
-        return back()->withErrors(['email' => 'Invalid email or password.']);
-    }
-
-    // ---------- Outlet Admin login ----------
-    public function loginOutlet(Request $request)
-    {
-        $credentials = $request->validate([
-            'email'    => 'required|email',
-            'password' => 'required',
-        ]);
-
-        if (Auth::attempt($credentials + ['role' => 'outlet_admin'])) {
-            $request->session()->regenerate();
-            return redirect('/');
-        }
-
-        return back()->withErrors(['email' => 'Invalid admin email or password.']);
-    }
+    
 
     // ---------- Logout ----------
     public function logout(Request $request)
