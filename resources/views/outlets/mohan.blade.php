@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+    <meta charset="UTF-8">
     <title>SabraEat - Mohan Bakery & Sweets</title>
     <style>
         body {
@@ -10,7 +10,7 @@
             color: #172033;
             margin: 0;
         }
-         .navbar {
+        .navbar {
             background-color: #FFFFFF;
             padding: 15px 40px;
             display: flex;
@@ -32,7 +32,7 @@
             border-radius: 20px;
             font-size: 14px;
         }
-         .cart-btn {
+        .cart-btn {
             background-color: #D1D119;
             color: #172033;
             font-weight: bold;
@@ -46,7 +46,7 @@
             margin: 20px auto;
             padding: 0 20px;
         }
-         .back-link {
+        .back-link {
             display: inline-block;
             color: #854d0e;
             text-decoration: none;
@@ -54,7 +54,7 @@
             font-weight: bold;
             margin-bottom: 15px;
         }
-         .outlet {
+        .outlet {
             background-color: #FFFFFF;
             border: 1px solid #dce4ed;
             border-radius: 15px;
@@ -63,7 +63,7 @@
             align-items: center;
             gap: 24px;
         }
-         .photo {
+        .photo {
             width: 200px;
             height: 110px;
             background-color: #FEF9C3;
@@ -115,7 +115,7 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 16px;
         }
-         .food-card {
+        .food-card {
             background-color: #FFFFFF;
             border: 1px solid #dce4ed;
             border-radius: 15px;
@@ -150,6 +150,10 @@
             font-weight: bold;
             font-size: 16px;
             cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
         }
         .outlet-info-box {
             background-color: #FEFCE8;
@@ -163,7 +167,7 @@
             font-size: 15px;
             color: #854d0e;
         }
-         .outlet-info-box p {
+        .outlet-info-box p {
             margin: 4px 0;
             font-size: 13px;
             color: #64748B;
@@ -205,7 +209,12 @@
                 <h4>Fish Bun (Malu Paan)</h4>
                 <div class="card-bottom">
                     <p>Rs. 120</p>
-                    <button class="add">+</button>
+                    <form action="{{ route('cart.add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="item_name" value="Fish Bun (Malu Paan)">
+                        <input type="hidden" name="item_price" value="120">
+                        <button type="submit" class="add">+</button>
+                    </form>
                 </div>
             </div>
 
@@ -214,7 +223,12 @@
                 <h4>Sausage Roll</h4>
                 <div class="card-bottom">
                     <p>Rs. 140</p>
-                    <button class="add">+</button>
+                    <form action="{{ route('cart.add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="item_name" value="Sausage Roll">
+                        <input type="hidden" name="item_price" value="140">
+                        <button type="submit" class="add">+</button>
+                    </form>
                 </div>
             </div>
 
@@ -223,7 +237,12 @@
                 <h4>Egg Pastry</h4>
                 <div class="card-bottom">
                     <p>Rs. 130</p>
-                    <button class="add">+</button>
+                    <form action="{{ route('cart.add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="item_name" value="Egg Pastry">
+                        <input type="hidden" name="item_price" value="130">
+                        <button type="submit" class="add">+</button>
+                    </form>
                 </div>
             </div>
 
@@ -232,7 +251,12 @@
                 <h4>Vegetable Roti</h4>
                 <div class="card-bottom">
                     <p>Rs. 100</p>
-                    <button class="add">+</button>
+                    <form action="{{ route('cart.add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="item_name" value="Vegetable Roti">
+                        <input type="hidden" name="item_price" value="100">
+                        <button type="submit" class="add">+</button>
+                    </form>
                 </div>
             </div>
 
@@ -241,7 +265,12 @@
                 <h4>Butter Cake Slice</h4>
                 <div class="card-bottom">
                     <p>Rs. 150</p>
-                    <button class="add">+</button>
+                    <form action="{{ route('cart.add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="item_name" value="Butter Cake Slice">
+                        <input type="hidden" name="item_price" value="150">
+                        <button type="submit" class="add">+</button>
+                    </form>
                 </div>
             </div>
 
@@ -250,7 +279,12 @@
                 <h4>Chicken Patties (2pcs)</h4>
                 <div class="card-bottom">
                     <p>Rs. 160</p>
-                    <button class="add">+</button>
+                    <form action="{{ route('cart.add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="item_name" value="Chicken Patties (2pcs)">
+                        <input type="hidden" name="item_price" value="160">
+                        <button type="submit" class="add">+</button>
+                    </form>
                 </div>
             </div>
 
@@ -259,7 +293,12 @@
                 <h4>Chocolate Donut</h4>
                 <div class="card-bottom">
                     <p>Rs. 180</p>
-                    <button class="add">+</button>
+                    <form action="{{ route('cart.add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="item_name" value="Chocolate Donut">
+                        <input type="hidden" name="item_price" value="180">
+                        <button type="submit" class="add">+</button>
+                    </form>
                 </div>
             </div>
 
@@ -268,7 +307,12 @@
                 <h4>Sweet Cream Bun</h4>
                 <div class="card-bottom">
                     <p>Rs. 110</p>
-                    <button class="add">+</button>
+                    <form action="{{ route('cart.add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="item_name" value="Sweet Cream Bun">
+                        <input type="hidden" name="item_price" value="110">
+                        <button type="submit" class="add">+</button>
+                    </form>
                 </div>
             </div>
         </div>
