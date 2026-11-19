@@ -33,7 +33,7 @@
                 <option value="Jayalanka Food" {{ old('outlet') == 'Jayalanka Food' ? 'selected' : '' }}>Jayalanka Food</option>
                 <option value="Dayashanthi" {{ old('outlet') == 'Dayashanthi' ? 'selected' : '' }}>Dayashanthi</option>
                 <option value="Royal Box" {{ old('outlet') == 'Royal Box' ? 'selected' : '' }}>Royal Box</option>
-                <option value="Bhanini Food" {{ old('outlet') == 'Bhanini Food' ? 'selected' : '' }}>Bhanini Food</option>
+                <option value="Bhanini Food" {{ old('outlet') == 'Bhamini Food' ? 'selected' : '' }}>Bhamini Food</option>
                 <option value="Samanala Lounge" {{ old('outlet') == 'Samanala Lounge' ? 'selected' : '' }}>Samanala Lounge</option>
                 <option value="Mohan Bakery" {{ old('outlet') == 'Mohan Bakery' ? 'selected' : '' }}>Mohan Bakery</option>
                 <option value="Liyanage Bakery" {{ old('outlet') == 'Liyanage Bakery' ? 'selected' : '' }}>Liyanage Bakery</option>
