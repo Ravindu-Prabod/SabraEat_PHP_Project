@@ -15,5 +15,13 @@ Route::post('/register', [AuthController::class, 'registerCustomer'])->name('reg
 Route::get('/register/outlet', [AuthController::class, 'showRegisterOutlet'])->name('register.outlet');
 Route::post('/register/outlet', [AuthController::class, 'registerOutlet'])->name('register.outlet.post');
 
-// Login
+// Customer login
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'loginCustomer'])->name('login.post');
+
+// Outlet Admin login
+Route::get('/login/outlet', [AuthController::class, 'showLoginOutlet'])->name('login.outlet');
+Route::post('/login/outlet', [AuthController::class, 'loginOutlet'])->name('login.outlet.post');
+
+// Logout
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

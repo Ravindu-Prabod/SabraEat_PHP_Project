@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Register customer - SabraEat')
+@section('title', 'Register - SabraEat')
 
 @section('content')
 <div class="card">
@@ -9,12 +9,12 @@
     <p class="subtitle">Register as a Student or Campus Customer</p>
 
     @if ($errors->any())
-    <div class="alert">
-        @foreach ($errors->all() as $error)
-            <div>{{ $error }}</div>
-        @endforeach
-    </div>
-@endif
+        <div class="alert">
+            @foreach ($errors->all() as $error)
+                <div>{{ $error }}</div>
+            @endforeach
+        </div>
+    @endif
 
     <div class="tabs">
         <a href="{{ route('register') }}" class="tab active">Student / Customer</a>

@@ -10,19 +10,25 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     // ---------- Pages ----------
+    // 'Register pages.register_customer' = resources/views/Register pages/register_customer.blade.php
     public function showRegisterCustomer()
     {
-        return view('register_customer');
+        return view('Register pages.register_customer');
     }
 
     public function showRegisterOutlet()
     {
-        return view('register_outlet');
+        return view('Register pages.register_outlet');
     }
 
     public function showLogin()
     {
-        return view('login');
+        return view('Login pages.login');
+    }
+
+    public function showLoginOutlet()
+    {
+        return view('Login pages.login_outlet');
     }
 
     // ---------- Student / Customer register ----------
@@ -67,6 +73,48 @@ class AuthController extends Controller
         ]);
 
         Auth::login($user);
+
+        return redirect('/');
+    }
+
+    // ---------- Customer login ----------
+    public function loginCustomer(Request $request)
+    {
+        $credentials = $request->validate([
+            'email'    => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if (Auth::attempt($credentials + ['role' => 'customer'])) {
+            $request->session()->regenerate();
+            return redirect('/');
+        }
+
+        return back()->withErrors(['email' => 'Invalid email or password.']);
+    }
+
+    // ---------- Outlet Admin login ----------
+    public function loginOutlet(Request $request)
+    {
+        $credentials = $request->validate([
+            'email'    => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if (Auth::attempt($credentials + ['role' => 'outlet_admin'])) {
+            $request->session()->regenerate();
+            return redirect('/');
+        }
+
+        return back()->withErrors(['email' => 'Invalid admin email or password.']);
+    }
+
+    // ---------- Logout ----------
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return redirect('/');
     }
