@@ -190,7 +190,7 @@
             <img src="{{ asset('images/Logo.png') }}" alt="SabraEat Logo" style="height: 40px;">
         </a>
         <input type="text" class="search" placeholder="Search meals in Uvindu Food Cabin...">
-        <a href="#" class="cart-btn">Cart ({{ collect(session('cart', []))->sum('qty') }})</a>
+        <a href="{{ route('cart.index') }}" class="cart-btn">Cart ({{ collect(session('cart', []))->sum('qty') }})</a>
     </div>
 
     <div class="container">
