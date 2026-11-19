@@ -3,7 +3,179 @@
     <head>
         <title>SabraEat - Uvindu Food Cabin</title>
         <style>
-            
+           body {
+            font-family: Arial, sans-serif;
+            background-color: #FFFFFF;
+            color: #172033;
+            margin: 0;
+        }
+         .navbar {
+            background-color: #FFFFFF;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #172033;
+            text-decoration: none;
+        }
+         .logo-icon {
+            background-color: #D1D119;
+            padding: 6px 10px;
+            border-radius: 10px;
+        }
+        .logo span { color: #8a8d00; }
+        .search {
+            width: 350px;
+            padding: 12px 20px;
+            border: none;
+            background-color: #f0f3f7;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        .cart-btn {
+            background-color: #D1D119;
+            color: #172033;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .back-link {
+            display: inline-block;
+            color: #854d0e;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .outlet {
+            background-color: #FFFFFF;
+            border: 1px solid #dce4ed;
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .photo {
+            width: 200px;
+            height: 110px;
+            background-color: #FEF9C3;
+            border: 1px solid #D1D119;
+            border-radius: 15px;
+            text-align: center;
+            line-height: 110px;
+            color: #854d0e;
+            font-weight: bold;
+        }
+        .details h2 {
+            font-size: 22px;
+            margin: 0 0 6px 0;
+        }
+        .status-badge {
+            background-color: #FEF9C3;
+            color: #854d0e;
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+        .details p {
+            font-size: 13px;
+            color: #64748B;
+            margin: 5px 0;
+        }
+         .categories {
+            margin-top: 12px;
+            display: flex;
+            gap: 8px;
+        }
+        .category {
+            background-color: #f0f3f7;
+            color: #172033;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .category.active {
+            background-color: #D1D119;
+        }
+        .menu-title {
+            font-size: 18px;
+            margin: 25px 0 15px 0;
+        }
+         .food-menu {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .food-card {
+            background-color: #FFFFFF;
+            border: 1px solid #dce4ed;
+            border-radius: 15px;
+            padding: 14px;
+        }
+        .food-image {
+            background-color: #FEF9C3;
+            height: 85px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+        .food-card h4 {
+            font-size: 14px;
+            margin: 0 0 8px 0;
+        }
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .food-card p {
+            font-size: 13px;
+            font-weight: bold;
+            margin: 0;
+        }
+         .add {
+            background-color: #D1D119;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .outlet-info-box {
+            background-color: #FEFCE8;
+            border: 1px solid #D1D119;
+            border-radius: 15px;
+            padding: 18px 24px;
+            margin: 30px 0 40px 0;
+        }
+        .outlet-info-box h4 {
+            margin: 0 0 8px 0;
+            font-size: 15px;
+            color: #854d0e;
+        }
+          .outlet-info-box p {
+            margin: 4px 0;
+            font-size: 13px;
+            color: #64748B;
+        } 
         </style>
         </head>
         <body>
