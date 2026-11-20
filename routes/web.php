@@ -7,6 +7,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/outlets', function () {
+    return view('food_outlets');
+});
+
+Route::get('/bakery', function () {
+    return view('bakery');
+});
+
 // Student / Customer register
 Route::get('/register', [AuthController::class, 'showRegisterCustomer'])->name('register');
 Route::post('/register', [AuthController::class, 'registerCustomer'])->name('register.post');
