@@ -11,24 +11,24 @@ class AuthController extends Controller
 {
     // ---------- Pages ----------
 
-    public function showRegisterCustomer()
-    {
-        return view('register_customer');
-    }
-
-    public function showRegisterOutlet()
-    {
-        return view('register_outlet');
-    }
-
     public function showLogin()
     {
-        return view('login');
+        return view('auth.login');
     }
 
     public function showLoginOutlet()
     {
-        return view('login_outlet');
+        return view('auth.login_outlet');
+    }
+
+    public function showRegisterCustomer()
+    {
+        return view('auth.register_customer');
+    }
+
+    public function showRegisterOutlet()
+    {
+        return view('auth.register_outlet');
     }
 
     // ---------- Student / Customer register ----------
@@ -38,6 +38,7 @@ class AuthController extends Controller
             'name'     => 'required|string|max:255',
             'email'    => 'required|email|unique:users,email',
             'phone'    => 'required|string|max:20',
+            'location' => 'nullable|string|max:255',
             'password' => 'required|min:8|confirmed',
         ]);
 
@@ -45,13 +46,14 @@ class AuthController extends Controller
             'name'     => $data['name'],
             'email'    => $data['email'],
             'phone'    => $data['phone'],
+            'location' => $data['location'],
             'role'     => 'customer',
             'password' => Hash::make($data['password']),
         ]);
 
         Auth::login($user);
 
-        return redirect('/');
+        return redirect()->route('home')->with('success', 'Welcome to SabraEat! Your customer account has been created.');
     }
 
     // ---------- Outlet Admin register ----------
@@ -61,12 +63,14 @@ class AuthController extends Controller
             'outlet'   => 'required|string|max:255',
             'name'     => 'required|string|max:255',
             'email'    => 'required|email|unique:users,email',
+            'phone' => 'nullable|string|max:20',
             'password' => 'required|min:8|confirmed',
         ]);
 
         $user = User::create([
             'name'     => $data['name'],
             'email'    => $data['email'],
+            'phone' => $data['phone'] ?? '+94 77 000 0000',
             'outlet'   => $data['outlet'],
             'role'     => 'outlet_admin',
             'password' => Hash::make($data['password']),
@@ -74,7 +78,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect('/');
+        return redirect()->route('outlet.dashboard')->with('success', "Welcome {$data['name']}! Your Outlet Admin account for {$data['outlet']} is active.");
     }
 
     //-------------Customer login --------------------
@@ -118,6 +122,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect()->route('home')->with('success', 'You have been safely logged out.');
     }
 }
