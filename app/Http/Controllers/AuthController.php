@@ -11,22 +11,27 @@ class AuthController extends Controller
 {
     // ---------- Pages ----------
 
+    public function showLogin()
+    {
+        return view('auth.login');
+    }
+
+    public function showLoginOutlet()
+    {
+        return view('auth.login_outlet');
+    }
+
     public function showRegisterCustomer()
     {
-        return view('register_customer');
+        return view('auth.register_customer');
     }
 
     public function showRegisterOutlet()
     {
-        return view('register_outlet');
+        return view('auth.register_outlet');
     }
 
-    public function showLogin()
-    {
-        return view('login');
-    }
-
-      // ---------- Student / Customer register ----------
+    // ---------- Student / Customer register ----------
     public function registerCustomer(Request $request)
     {
         $data = $request->validate([
@@ -46,7 +51,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect('/');
+        return redirect()->route('home')->with('success', 'Welcome to SabraEat! Your customer account has been created.');
     }
 
     // ---------- Outlet Admin register ----------
@@ -56,12 +61,14 @@ class AuthController extends Controller
             'outlet'   => 'required|string|max:255',
             'name'     => 'required|string|max:255',
             'email'    => 'required|email|unique:users,email',
+            'phone' => 'nullable|string|max:20',
             'password' => 'required|min:8|confirmed',
         ]);
 
         $user = User::create([
             'name'     => $data['name'],
             'email'    => $data['email'],
+            'phone' => $data['phone'] ?? '+94 77 000 0000',
             'outlet'   => $data['outlet'],
             'role'     => 'outlet_admin',
             'password' => Hash::make($data['password']),
@@ -69,16 +76,42 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect('/');
+        return redirect()->route('outlet.dashboard')->with('success', "Welcome {$data['name']}! Your Outlet Admin account for {$data['outlet']} is active.");
     }
 
-     //-------------Customer login --------------------
+    //-------------Customer login --------------------
+    public function loginCustomer(Request $request)
+    {
+        $credentials = $request->validate([
+            'email'    => 'required|email',
+            'password' => 'required',
+        ]);
 
-
-     //-------------Outlet Adim login --------------------
         
+        if (Auth::attempt($credentials + ['role' => 'customer'])) {
+            $request->session()->regenerate();
+            return redirect('/');
+        }
 
-        
+        return back()->withErrors(['email' => 'Invalid email or password.']);
+    }
+
+
+    //-------------Outlet Adim login --------------------
+    public function loginOutlet(Request $request)
+    {
+        $credentials = $request->validate([
+            'email'    => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if (Auth::attempt($credentials + ['role' => 'outlet_admin'])) {
+            $request->session()->regenerate();
+            return redirect('/');
+        }
+
+        return back()->withErrors(['email' => 'Invalid admin email or password.']);
+    }
 
     //--------------Logout------------------
     public function logout(Request $request)
@@ -87,11 +120,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect()->route('home')->with('success', 'You have been safely logged out.');
     }
-
-    
 }
-
-
-?>
