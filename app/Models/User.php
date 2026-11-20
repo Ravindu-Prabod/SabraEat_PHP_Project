@@ -23,7 +23,7 @@ class User extends Authenticatable
 
     public function orders(): HasMany
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(order::class);
     }
 
     public function isCustomer(): bool
