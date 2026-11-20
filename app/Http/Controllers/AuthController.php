@@ -26,7 +26,12 @@ class AuthController extends Controller
         return view('login');
     }
 
-      // ---------- Student / Customer register ----------
+    public function showLoginOutlet()
+    {
+        return view('login_outlet');
+    }
+
+    // ---------- Student / Customer register ----------
     public function registerCustomer(Request $request)
     {
         $data = $request->validate([
@@ -72,13 +77,39 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-     //-------------Customer login --------------------
+    //-------------Customer login --------------------
+    public function loginCustomer(Request $request)
+    {
+        $credentials = $request->validate([
+            'email'    => 'required|email',
+            'password' => 'required',
+        ]);
 
-
-     //-------------Outlet Adim login --------------------
         
+        if (Auth::attempt($credentials + ['role' => 'customer'])) {
+            $request->session()->regenerate();
+            return redirect('/');
+        }
 
-        
+        return back()->withErrors(['email' => 'Invalid email or password.']);
+    }
+
+
+    //-------------Outlet Adim login --------------------
+    public function loginOutlet(Request $request)
+    {
+        $credentials = $request->validate([
+            'email'    => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if (Auth::attempt($credentials + ['role' => 'outlet_admin'])) {
+            $request->session()->regenerate();
+            return redirect('/');
+        }
+
+        return back()->withErrors(['email' => 'Invalid admin email or password.']);
+    }
 
     //--------------Logout------------------
     public function logout(Request $request)
@@ -89,9 +120,4 @@ class AuthController extends Controller
 
         return redirect('/');
     }
-
-    
 }
-
-
-?>

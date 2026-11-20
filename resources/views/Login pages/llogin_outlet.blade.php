@@ -5,19 +5,26 @@
 @section('content')
 <div class="card">
 
-<h1 style="margin-top: 28px;">Outlet Admin Login</h1>
+    <h1 style="margin-top: 28px;">Outlet Admin Login</h1>
 
-@if ($errors->any())
-@foreach ($errors->all() as $error)
-                <div>{{ $error }}</div>
-            @endforeach
-            @endif
+    @if ($errors->any())
+    <div class="alert">
+        @foreach ($errors->all() as $error)
+        <div>{{ $error }}</div>
+        @endforeach
+    </div>
+    @endif
+
+    <div class="tabs" style="margin-top: 32px;">
+        <a href="{{ route('login') }}" class="tab">Customer</a>
+        <a href="{{ route('login.outlet') }}" class="tab active">Outlet Admin</a>
+    </div>
 
 
-<form action="{{ route('login.outlet.post') }}" method="POST">
+    <form action="{{ route('login.outlet.post') }}" method="POST">
         @csrf
 
-<div class="form-group">
+        <div class="form-group">
             <label>Admin Username or Outlet Email</label>
             <input type="email" name="email" placeholder="admin_uvindu@sabraeat.lk" required>
         </div>
@@ -31,8 +38,12 @@
             <a href="#" style="color: #7c3f00; text-decoration: none;">Forgot Admin Password?</a>
         </p>
 
-        <p class="login-link">New Outlet Manager?
-             <a href="{{ route('register.outlet') }}">Register Outlet Admin</a></p>
+        <button type="submit" class="btn" style="margin-top: 16px;">Log In to Outlet Admin Dashboard &rarr;</button>
+    </form>
+
+    <p class="login-link">New Outlet Manager?
+        <a href="{{ route('register.outlet') }}">Register Outlet Admin</a>
+    </p>
 
 </div>
 
